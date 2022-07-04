@@ -168,7 +168,7 @@ const lessons = {
   ],
 }
 
-const showLessons = (lessons) => {
+const showLessons = (lessons, searched) => {
   let arr = Object.keys(lessons)
   if (arr.length === 0) {
     $('.not-found').style.display = 'block'
@@ -180,7 +180,9 @@ const showLessons = (lessons) => {
   arr.forEach((i) => {
     let data = `<div class="lesson-no"><span>${i}</span></div>`
     for (let j of lessons[i]) {
-      data += `<span class="topic"><span class="diamond">⯁</span> ${j}</span>`
+      data += `<span class="topic${
+        searched && j.includes(searched) ? ' searched' : ''
+      }"><span class="diamond">⯁</span> ${j}</span>`
     }
     $('.lessons').innerHTML += '<div class="lesson">' + data + '</div>'
   })
@@ -199,8 +201,9 @@ $('.search input').addEventListener('keyup', (e) => {
       if (j.includes(value)) flag = true
     }
     if (flag === true) lessons2[i] = lessons[i]
-    showLessons(lessons2)
+    showLessons(lessons2, value)
   })
-  // TODO: Highlight searched term in all lessons
+
   // TODO: Search delay
+  // TODO: Change innerhtml to createelement
 })

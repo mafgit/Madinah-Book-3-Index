@@ -93,7 +93,8 @@ input {
   cursor: default;
 }
 
-.topic:hover {
+.topic:hover,
+.topic.searched {
   background-color: white;
   color: black;
   transition: 0.2s;
