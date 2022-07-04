@@ -207,7 +207,4 @@ $('.search input').addEventListener('keyup', (e) => {
       showLessons(lessons2, value)
     })
   }, 1000)
-
-  // TODO: Search delay
-  // TODO: Change innerhtml to createelement
 })
