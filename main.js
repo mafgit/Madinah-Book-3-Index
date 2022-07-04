@@ -182,7 +182,7 @@ const showLessons = (lessons, searched) => {
     for (let j of lessons[i]) {
       data += `<span class="topic${
         searched && j.includes(searched) ? ' searched' : ''
-      }"><span class="diamond">⯁</span> ${j}</span>`
+      }"><span class="diamond">&#11201;</span> ${j}</span>`
     }
     $('.lessons').innerHTML += '<div class="lesson">' + data + '</div>'
   })
@@ -206,5 +206,7 @@ $('.search input').addEventListener('keyup', (e) => {
       if (flag === true) lessons2[i] = lessons[i]
       showLessons(lessons2, value)
     })
-  }, 1000)
+  }, 850)
+
+  // TODO: add the remaining lessons
 })

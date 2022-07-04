@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Tajawal:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500&family=Ubuntu&display=swap');
 
 * {
   box-sizing: border-box;
@@ -115,8 +115,9 @@ footer {
   padding: 10px;
   text-align: center;
   font-size: 18px;
-  font-family: montserrat, Arial, sans-serif;
+  font-family: ubuntu, Arial, sans-serif;
   justify-self: flex-end;
+  font-weight: bold;
 }
 
 a,
@@ -126,7 +127,7 @@ a:visited {
 
 .not-found {
   color: #fff;
-  font-family: montserrat, Arial, sans-serif;
+  font-family: ubuntu, Arial, sans-serif;
 }
 
 @media (max-width: 1400px) {
