@@ -119,12 +119,65 @@ const lessons = {
     'جمع خطيئة خطايا',
     'المصدر من مضى مُضيّ',
   ],
-  '٢٠': ['باب'],
+  '٢٠': [
+    'باب تفعل',
+    'حذف إخظى التاءين من المضارع',
+    'المطاوعة',
+    'لما الحيمية',
+    'الإختصاص',
+  ],
+  '٢١': [
+    'باب تفاعل',
+    'المشاركة',
+    'إظهار ما ليس في الباطن',
+    'ليت',
+    'الفاء السببية',
+    'لا النافية للجنس',
+    'الأخرف المشبهة بالفعل',
+    'حذف حرف الجر قبل المصدر مؤول',
+    'أوزان للعيوب والأولان',
+    'المصدران للمثال',
+    'وزن فُعلة وجمعه فُعُلات',
+    'البدل',
+  ],
+  '٢٢': [
+    'باب انفعل',
+    'مطاوعا فعل و فعّل',
+    'حذف همزة الوصل عند دخول همزة الاستفهام',
+    'الجملة مضافا إليه',
+    'لولا',
+    '"هذا" نعتا',
+    'هاء السكت',
+    'التغليب',
+  ],
+  '٢٣': [
+    'باب افتعل',
+    'تغيير بعض الحروف إلى أخرى في هذا الباب',
+    'إذا الفجائية',
+    'ظن',
+    '"في" بعد دخل',
+    'صيغ مبالغة اسم الفاعل',
+    '"لا بد"',
+  ],
+  '۲۹': [
+    'المفعول له / لأجله',
+    'هلا',
+    'أحرف للتحضيض',
+    '"دأبي وديدني"',
+    'لا العاطفة',
+  ],
 }
 
 const showLessons = (lessons) => {
+  let arr = Object.keys(lessons)
+  if (arr.length === 0) {
+    $('.not-found').style.display = 'block'
+    $('.lessons').innerHTML = ''
+    return
+  }
+  $('.not-found').style.display = 'none'
   $('.lessons').innerHTML = ''
-  Object.keys(lessons).forEach((i) => {
+  arr.forEach((i) => {
     let data = `<div class="lesson-no"><span>${i}</span></div>`
     for (let j of lessons[i]) {
       data += `<span class="topic"><span class="diamond">⯁</span> ${j}</span>`
@@ -149,5 +202,5 @@ $('.search input').addEventListener('keyup', (e) => {
     showLessons(lessons2)
   })
   // TODO: Highlight searched term in all lessons
-  // TODO: Show "Not found"
+  // TODO: Search delay
 })

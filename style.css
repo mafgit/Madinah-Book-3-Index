@@ -18,6 +18,7 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #1d1d1d;
+  min-height: 100vh;
 }
 
 .heading {
@@ -27,13 +28,14 @@ body {
 .heading h1 {
   font-size: 35px;
   color: #fff;
+  text-align: center;
 }
 .search {
-  margin: auto;
   margin-bottom: 20px;
   width: 80%;
   display: flex;
   justify-content: center;
+  justify-self: flex-start;
 }
 input {
   padding: 10px;
@@ -110,13 +112,20 @@ footer {
   color: #fff;
   margin-top: 20px;
   padding: 10px;
+  text-align: center;
   font-size: 18px;
   font-family: montserrat, Arial, sans-serif;
+  justify-self: flex-end;
 }
 
 a,
 a:visited {
   color: red;
+}
+
+.not-found {
+  color: #fff;
+  font-family: montserrat, Arial, sans-serif;
 }
 
 @media (max-width: 1400px) {
