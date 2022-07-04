@@ -190,19 +190,23 @@ const showLessons = (lessons, searched) => {
 
 showLessons(lessons)
 
+let timeout
 $('.search input').addEventListener('keyup', (e) => {
-  const { value } = e.target
-  let lessons2 = {}
-  let flag
+  clearTimeout(timeout)
+  timeout = setTimeout(() => {
+    const { value } = e.target
+    let lessons2 = {}
+    let flag
 
-  Object.keys(lessons).forEach((i) => {
-    flag = false
-    for (let j of lessons[i]) {
-      if (j.includes(value)) flag = true
-    }
-    if (flag === true) lessons2[i] = lessons[i]
-    showLessons(lessons2, value)
-  })
+    Object.keys(lessons).forEach((i) => {
+      flag = false
+      for (let j of lessons[i]) {
+        if (j.includes(value)) flag = true
+      }
+      if (flag === true) lessons2[i] = lessons[i]
+      showLessons(lessons2, value)
+    })
+  }, 1000)
 
   // TODO: Search delay
   // TODO: Change innerhtml to createelement
