@@ -15,34 +15,38 @@ body {
   font-weight: 500;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #1d1d1d;
   min-height: 100vh;
 }
 
-.heading {
+.top {
   margin-top: 40px;
   margin-bottom: 20px;
   max-width: 80%;
 }
-.heading h1 {
+.top h1 {
   font-size: 35px;
   color: #fff;
   text-align: center;
 }
-.search {
+.top {
   margin-bottom: 20px;
   width: 80%;
   display: flex;
   justify-content: center;
   justify-self: flex-start;
+  flex-direction: column;
+  gap: 10px;
 }
-input {
+
+.top input {
   padding: 10px;
   border-radius: 30px;
   font-size: 20px;
-  min-width: 500px;
+  width: 500px;
+  margin: auto;
   outline: none;
   border: none;
   background-color: rgb(243, 243, 243);
@@ -159,14 +163,11 @@ a:visited {
     grid-template-columns: repeat(1, 1fr);
     gap: 20px;
   }
-  .search input {
-    min-width: 100%;
+  .top input {
+    width: 100%;
   }
-}
 
-@media (max-width: 345px) {
-  .heading,
-  .search {
+  .top {
     max-width: 90%;
     width: 90%;
   }

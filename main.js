@@ -191,7 +191,7 @@ const showLessons = (lessons, searched) => {
 showLessons(lessons)
 
 let timeout
-$('.search input').addEventListener('keyup', (e) => {
+$('.top input').addEventListener('keyup', (e) => {
   clearTimeout(timeout)
   timeout = setTimeout(() => {
     const { value } = e.target
