@@ -24,6 +24,7 @@ body {
 .heading {
   margin-top: 40px;
   margin-bottom: 20px;
+  max-width: 80%;
 }
 .heading h1 {
   font-size: 35px;
@@ -79,6 +80,15 @@ input {
   border-radius: 5px;
 }
 
+.diamond {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  background-color: white;
+  transform: rotate(45deg);
+  border-radius: 1px;
+}
+
 .topic {
   background-color: #4f4f4f;
   color: white;
@@ -100,13 +110,14 @@ input {
   transition: 0.2s;
 }
 
+.topic:hover .diamond,
+.topic.searched .diamond {
+  background-color: rgb(50 50 50);
+}
+
 .lesson-no span {
   transform: rotate(-45deg);
   display: inline-block;
-}
-
-.diamond {
-  font-size: 10px;
 }
 
 footer {
@@ -118,6 +129,7 @@ footer {
   font-family: ubuntu, Arial, sans-serif;
   justify-self: flex-end;
   font-weight: bold;
+  margin-bottom: 20px;
 }
 
 a,
@@ -145,8 +157,17 @@ a:visited {
 @media (max-width: 800px) {
   .lessons {
     grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
   }
   .search input {
     min-width: 100%;
+  }
+}
+
+@media (max-width: 345px) {
+  .heading,
+  .search {
+    max-width: 90%;
+    width: 90%;
   }
 }
