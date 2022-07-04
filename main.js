@@ -182,7 +182,7 @@ const showLessons = (lessons, searched) => {
     for (let j of lessons[i]) {
       data += `<span class="topic${
         searched && j.includes(searched) ? ' searched' : ''
-      }"><span class="diamond">&#11201;</span> ${j}</span>`
+      }"><span class="diamond">&#9670;</span> ${j}</span>`
     }
     $('.lessons').innerHTML += '<div class="lesson">' + data + '</div>'
   })
