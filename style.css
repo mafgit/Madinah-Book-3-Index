@@ -21,6 +21,24 @@ body {
   min-height: 100vh;
 }
 
+::-webkit-scrollbar {
+  border-radius: 10px;
+  width: 10px;
+  background: linear-gradient(#4f4f4f, #1d1d1d);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: white;
+}
+.mid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .top {
   margin-top: 40px;
   margin-bottom: 20px;
@@ -91,6 +109,7 @@ body {
   background-color: white;
   transform: rotate(45deg);
   border-radius: 1px;
+  margin-left: 5px;
 }
 
 .topic {
@@ -125,9 +144,33 @@ body {
   display: inline-block;
 }
 
+.nav-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  direction: ltr;
+  gap: 10px;
+}
+
+.nav-btns button {
+  font-family: ubuntu, Arial, sans-serif;
+  background: none;
+  color: #fff;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transform: 0.2s;
+}
+
+.nav-btns button.on {
+  background-color: red;
+}
+
 footer {
   color: #fff;
-  margin-top: 20px;
   padding: 10px;
   text-align: center;
   font-size: 18px;
@@ -135,6 +178,7 @@ footer {
   justify-self: flex-end;
   font-weight: bold;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 a,

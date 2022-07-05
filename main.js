@@ -1,22 +1,47 @@
 const $ = (el) => document.querySelector(el)
 
+const clearLessons = () => {
+  const div = $('.lessons')
+  while (div.firstChild) {
+    div.removeChild(div.firstChild)
+  }
+}
+
 const showLessons = (lessons, searched) => {
   let arr = Object.keys(lessons)
+  clearLessons()
+
   if (arr.length === 0) {
     $('.not-found').style.display = 'block'
-    $('.lessons').innerHTML = ''
     return
   }
   $('.not-found').style.display = 'none'
-  $('.lessons').innerHTML = ''
   arr.forEach((i) => {
-    let data = `<div class="lesson-no"><span>${i}</span></div>`
+    const lesson = document.createElement('div')
+    lesson.classList.add('lesson')
+
+    const lessonNo = document.createElement('div')
+    lessonNo.classList.add('lesson-no')
+
+    const span = document.createElement('span')
+    span.textContent = i
+
+    lessonNo.appendChild(span)
+    lesson.appendChild(lessonNo)
+
     for (let j of lessons[i]) {
-      data += `<span class="topic${
-        searched && j.includes(searched) ? ' searched' : ''
-      }"><span class="diamond"></span> ${j}</span>`
+      const topic = document.createElement('div')
+      topic.classList.add('topic')
+
+      const diamondSpan = document.createElement('span')
+      diamondSpan.classList.add('diamond')
+
+      topic.append(diamondSpan, j)
+      if (searched && j.includes(searched)) topic.classList.add('searched')
+
+      lesson.appendChild(topic)
     }
-    $('.lessons').innerHTML += '<div class="lesson">' + data + '</div>'
+    $('.lessons').appendChild(lesson)
   })
 }
 
@@ -38,7 +63,7 @@ $('.top input').addEventListener('keyup', (e) => {
       if (flag === true) lessons2[i] = lessons[i]
       showLessons(lessons2, value)
     })
-  }, 850)
+  }, 650)
 })
 
 // TODO: add the remaining lessons
