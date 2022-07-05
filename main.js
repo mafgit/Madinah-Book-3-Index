@@ -67,4 +67,7 @@ $('.top input').addEventListener('keyup', (e) => {
 })
 
 // TODO: add the remaining lessons
-alert('More lessons shall be added  إِنْ شَاءَ ٱللَّٰهُ')
+if (!localStorage.getItem('not-first')) {
+  alert('More lessons shall be added  إِنْ شَاءَ ٱللَّٰهُ')
+  localStorage.setItem('not-first', 'true')
+}
