@@ -105,6 +105,7 @@ body {
   transition: 0.2s;
   display: inline-block;
   cursor: default;
+  padding-top: 7.5px;
 }
 
 .topic:hover,
