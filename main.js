@@ -1,4 +1,5 @@
 const $ = (el) => document.querySelector(el)
+const perPage = 8
 
 const clearLessons = () => {
   const div = $('.lessons')
@@ -7,16 +8,51 @@ const clearLessons = () => {
   }
 }
 
-const showLessons = (lessons, searched) => {
-  let arr = Object.keys(lessons)
-  clearLessons()
+const clearBtns = () => {
+  const div = $('.nav-btns')
+  while (div.firstChild) {
+    div.removeChild(div.firstChild)
+  }
+}
 
+const calcPgs = (lessons) => Math.ceil(Object.keys(lessons).length / perPage)
+
+const showNavBtns = (lessons, searched) => {
+  clearBtns()
+  let pgs = calcPgs(lessons)
+  if (pgs < 2) return
+  for (let i = 1; i <= pgs; i++) {
+    const btn = document.createElement('button')
+    btn.textContent = i
+    if (i === 1) btn.classList.add('btn-on')
+    btn.onclick = (e) => {
+      let start = (i - 1) * perPage
+      let end = start + perPage
+      document.querySelectorAll('.nav-btns button').forEach((i) => {
+        i.classList.remove('btn-on')
+        i.disabled = false
+      })
+      e.target.classList.add('btn-on')
+      e.target.disabled = true
+      showLessons(lessons, searched, start, end)
+    }
+
+    $('.nav-btns').appendChild(btn)
+  }
+}
+
+const showLessons = (lessons, searched, start, end) => {
+  let arr = Object.keys(lessons)
+
+  clearLessons()
   if (arr.length === 0) {
     $('.not-found').style.display = 'block'
     return
   }
+
   $('.not-found').style.display = 'none'
-  arr.forEach((i) => {
+
+  arr.slice(start, end).forEach((i) => {
     const lesson = document.createElement('div')
     lesson.classList.add('lesson')
 
@@ -45,25 +81,27 @@ const showLessons = (lessons, searched) => {
   })
 }
 
-showLessons(lessons)
+window.onload = () => {
+  showLessons(lessons, '', 0, perPage)
+  showNavBtns(lessons, '')
 
-let timeout
-$('.top input').addEventListener('keyup', (e) => {
-  clearTimeout(timeout)
-  timeout = setTimeout(() => {
-    const { value } = e.target
-    let lessons2 = {}
-    let flag
+  let timeout
+  $('.top input').addEventListener('keyup', (e) => {
+    clearTimeout(timeout)
+    timeout = setTimeout(() => {
+      const { value } = e.target
+      let lessons2 = {}
+      let flag
 
-    Object.keys(lessons).forEach((i) => {
-      flag = false
-      for (let j of lessons[i]) {
-        if (j.includes(value)) flag = true
-      }
-      if (flag === true) lessons2[i] = lessons[i]
-      showLessons(lessons2, value)
-    })
-  }, 650)
-})
-
-// TODO: show limited lessons and add navigation
+      Object.keys(lessons).forEach((i) => {
+        flag = false
+        for (let j of lessons[i]) {
+          if (j.includes(value)) flag = true
+        }
+        if (flag === true) lessons2[i] = lessons[i]
+        showLessons(lessons2, value, 0, perPage)
+        showNavBtns(lessons2, value)
+      })
+    }, 650)
+  })
+}
